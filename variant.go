@@ -2,6 +2,7 @@ package dbus
 
 import (
 	"bytes"
+	"encoding/json"
 	"fmt"
 	"reflect"
 	"sort"
@@ -141,4 +142,8 @@ func (v Variant) String() string {
 // Value returns the underlying value of v.
 func (v Variant) Value() interface{} {
 	return v.value
+}
+
+func (v Variant) MarshalJSON() ([]byte, error) {
+	return json.Marshal(v.value)
 }
